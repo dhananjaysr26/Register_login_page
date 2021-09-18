@@ -12,6 +12,7 @@ export default function Register() {
     const [nameEr, setNameEr] = useState("");
     const [mobileEr, setMobileEr] = useState("");
     const [passwoedEr, setPasswordEr] = useState("");
+    const [emailEr, setEmailEr] = useState("");
     var [userData, setUserData] = useState(userData_schema);
     const inputHandler = (e) => {
         e.preventDefault();
@@ -25,12 +26,26 @@ export default function Register() {
         if (!isNaN(userData.name)) {
             flag = 0;
             setNameEr("Name Can't be Number");
-        } if (userData.mobile.length != 10) {
+        } else {
+            setNameEr("");
+        }
+        if (userData.mobile.length != 10) {
             flag = 0;
             setMobileEr("Mobile Number Should be 10 Digit");
-        } if (userData.password.length < 8) {
+        } else {
+            setMobileEr("");
+        }
+        if (userData.password.length < 8) {
             flag = 0;
             setPasswordEr("Password length should atlest 8 Character");
+        } else {
+            setPasswordEr("");
+        }
+        if (!userData.email.includes("@")) {
+            flag = 0;
+            setEmailEr("Email Not Valid");
+        } else {
+            setEmailEr("");
         }
         if (flag) {
             return 1;
@@ -73,6 +88,7 @@ export default function Register() {
                     <div className="">
                         <p className="error">{nameEr}</p>
                         <p className="error">{mobileEr}</p>
+                        <p className="error">{emailEr}</p>
                         <p className="error">{passwoedEr}</p>
                     </div>
                     <input type="button" value="Register" className="btn" onClick={onSubmitForm} />
