@@ -7,7 +7,7 @@ function Header() {
     const [menuClicked, setmenuClicked] = useState(1);
     return (
         <nav className="navBar">
-            <label className="logo" onClick={() => { history.push("/") }}><label className="logo-half">Sunday</label>Mobility</label>
+            <label className="logo" onClick={() => { history.push("/") }}><label className="logo-half">Soft</label>Mobility</label>
             <ul className={menuClicked ? "nav__links" : "nav__links active"} >
                 <li><a className="active" onClick={() => { history.push("/") }}>Home</a></li>
                 <li><a onClick={() => { history.push("/user-list") }}>User List</a></li>
